@@ -1,8 +1,8 @@
 import sys
 import os
 from google import genai
-from google.genai import types
-from dotenv import load_dotenv
+from google.genai import types # type: ignore
+from dotenv import load_dotenv # type: ignore
 
 
 def main():
