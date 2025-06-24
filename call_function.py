@@ -4,6 +4,8 @@ from functions.get_files_info import get_files_info, schema_get_files_info
 from functions.get_file_content import get_file_content, schema_get_file_content
 from functions.run_python_file import run_python_file, schema_run_python_file
 from functions.write_file import write_file, schema_write_file
+from functions.write_directory import write_directory, schema_write_directory
+from functions.delete_file import delete_file, schema_delete_file  # Importing the delete_file schema
 from config import WORKING_DIR
 
 available_functions = types.Tool(
@@ -12,9 +14,10 @@ available_functions = types.Tool(
         schema_get_file_content,
         schema_run_python_file,
         schema_write_file,
+        schema_write_directory,
+        schema_delete_file  # Adding the delete_file schema
     ]
 )
-
 
 def call_function(function_call_part, verbose=False):
     if verbose:
@@ -28,6 +31,8 @@ def call_function(function_call_part, verbose=False):
         "get_file_content": get_file_content,
         "run_python_file": run_python_file,
         "write_file": write_file,
+        "write_directory": write_directory,
+        "delete_file": delete_file  # Adding the delete_file function to the map
     }
     function_name = function_call_part.name
     if function_name not in function_map:
